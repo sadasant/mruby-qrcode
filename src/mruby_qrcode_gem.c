@@ -59,14 +59,12 @@ mrb_qr_s__generate(mrb_state *mrb, mrb_value self)
   }
 
   qr_addData(mrb, qr, content, mode);
-  printf("\n  after addData \n");
 
   if (!qrCmdFinalize(qr)) {
     mrb_raisef(mrb, E_QR_ERROR, "QR ERROR: %s", qrCmdGetErrorInfo(qr));
     qrCmdDestroy(qr);
     return mrb_nil_value();
   }
-  printf("\n  after qrCmdFinalize \n");
 
   buf        = qrGetSymbol(qr, fmt, sep, mag, &buf_size);
   result_mrb = mrb_str_new(mrb, buf, (size_t)buf_size);
