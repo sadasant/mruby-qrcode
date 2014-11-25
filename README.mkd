@@ -1,4 +1,4 @@
-﻿# mruby-qrcode
+# mruby-qrcode
 
 A simple mrbgem to generate QR Codes.
 
@@ -6,12 +6,12 @@ A simple mrbgem to generate QR Codes.
 
 Initialize the object with contents you want in the QR code `qr = QR.new("Hello world!")`,
 later you'll be able to change these contents by changing the value of `qr.msg`.
-To generate the bytecodes of the QR code, simply call `qr.generate()`, it will return
+To generate the bytecodes of the QR code, simply call `qr.generate()`("bmp" as default format and 3 as default magnify), it will return
 a string buffer which you can use to write the QR code file.
 
 ```ruby
 qr  = QR.new("Hello world!")
-buf = qr.generate()
+buf = qr.generate("bmp", 3)
 File.open("qrcode_hello_world.bmp", 'w') { |file| file.write(buf) }
 ```
 
