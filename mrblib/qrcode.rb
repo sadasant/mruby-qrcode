@@ -46,8 +46,8 @@ class QR
     @masktype = masktype
   end
 
-  def generate(format="bmp")
-    QR._generate(@msg, @version, get_mode(@mode), get_level(@eclevel), @masktype, get_fmt(format))
+  def generate(format="bmp", mag=3)
+    QR._generate(@msg, @version, get_mode(@mode), get_level(@eclevel), @masktype, get_fmt(format), mag)
   end
 
 end

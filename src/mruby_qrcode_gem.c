@@ -37,18 +37,17 @@ mrb_qr_s__generate(mrb_state *mrb, mrb_value self)
 {
   QRCMD_PTR_TYPE *qr;
 
-  mrb_int version, mode, eclevel, masktype, fmt;
+  mrb_int version, mode, eclevel, masktype, fmt, mag;
   mrb_value content_mrb, result_mrb;
 
   char *content;
   int buf_size;
   qr_byte_t *buf;
 
-  int mag     = 1;
   int sep     = QR_DIM_SEP;
   int errcode = QR_ERR_NONE;
 
-  mrb_get_args(mrb, "Siiiii", &content_mrb, &version, &mode, &eclevel, &masktype, &fmt);
+  mrb_get_args(mrb, "Siiiiii", &content_mrb, &version, &mode, &eclevel, &masktype, &fmt, &mag);
 
   content = mrb_str_to_cstr(mrb, content_mrb);
 
@@ -81,7 +80,7 @@ mrb_mruby_qrcode_gem_init(mrb_state* mrb)
 
   qr = mrb_define_class(mrb, "QR", mrb->object_class);
 
-  mrb_define_class_method(mrb , qr, "_generate", mrb_qr_s__generate, MRB_ARGS_REQ(6));
+  mrb_define_class_method(mrb , qr, "_generate", mrb_qr_s__generate, MRB_ARGS_REQ(7));
 }
 
 void
