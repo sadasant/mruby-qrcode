@@ -8,6 +8,11 @@ MRuby::Gem::Specification.new('mruby-qrcode') do |spec|
   qrcode_src = "#{spec.dir}/#{qrcode_dirname}/libqr"
   spec.cc.include_paths << "#{qrcode_src}"
 
+
+  if ( /mswin|mingw|win32/ =~ RUBY_PLATFORM ) then
+    spec.cc.defines << "QR_DLL_BUILD"
+  end
+
   spec.objs += %W(
     #{qrcode_src}/qr.c
     #{qrcode_src}/qrcnv.c
