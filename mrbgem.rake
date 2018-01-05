@@ -1,6 +1,8 @@
 MRuby::Gem::Specification.new('mruby-qrcode') do |spec|
-  spec.license = 'GPL'
-  spec.authors = 'sadasant@gmail.com'
+  spec.license = 'MIT'
+  spec.authors = ['sadasant', 'scalone']
+  spec.summary = 'Ruby interface to QR Code C Library by Ryusuke SEKIYAMA'
+  spec.version = '1.0.0'
 
   spec.cc.include_paths << "#{build.root}/src"
 
@@ -13,5 +15,4 @@ MRuby::Gem::Specification.new('mruby-qrcode') do |spec|
     #{qrcode_src}/qrcnv.c
     #{qrcode_src}/qrcnv_bmp.c
   ).map { |f| f.relative_path_from(dir).pathmap("#{build_dir}/%X.o") }
-
 end
